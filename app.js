@@ -1,6 +1,8 @@
 const experss = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
+const dotenv = require('dotenv').config({ debug: true });
+
 
 const app = experss();
 app.use(bodyParser.urlencoded({extended: true }));
@@ -43,7 +45,7 @@ app.post('/', (req, res) => {
 
     const options = {
         method: 'POST',
-        auth: 'yosef:6475361ce9342a35ce3fc112e77ba7a8-us18',
+        auth: process.env.API_KEY
     };
 
     const request = https.request(url, options ,(response) => {
